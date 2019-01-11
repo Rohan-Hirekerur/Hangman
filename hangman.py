@@ -3,14 +3,14 @@ import numpy as np
 import random
 import math
 
-black = (0,0,0)
-white = (255,255,255)
+black = (0, 0, 0)
+white = (255, 255, 255)
 
 pygame.init()
 
 height = 600
 width = 800
-size = [width,height]
+size = [width, height]
 screen = pygame.display.set_mode(size)
 font = pygame.font.Font(None, 60)
 clock = pygame.time.Clock()
@@ -18,6 +18,7 @@ pygame.display.set_caption("Hangman")
 list = ["auto,","else","long","switch","break","enum","register","typedef","case","extern","return","union","char","float","short","unsigned","const","for","signed","void","continue","goto","sizeof","volatile","default","if","static","while","do","int","struct","Packed","double","abstract","assert","boolean","break","byte","case","catch","char","class","const","continue","default","do","double","else","enum","extends","finally","float","for","goto","if","implements","import","instanceof","int","interface","long","native","new","package","private","protected","public","return","short","static","super","synchronized","this","throw","throws","transient","try","void","volatile","while","and","exec","not","assert","finally","or","break","for","pass","class","from","print","continue","global","raise","def","if","return","del","import","try","elif","in","while","else","is","with","except","lambda","yield"]
 print(len(list))
 taken = []
+
 
 def game_over(score):
     screen.fill(black)
@@ -31,7 +32,7 @@ def game_over(score):
         pygame.time.delay(1000)
 
 
-def display(keyword,selected,lives, score, time):
+def display(keyword, selected, lives, score, time):
     string = ""
     correct_letters = 0
     for i in range(0,len(keyword)):
@@ -83,7 +84,7 @@ def play(score, start_ticks):
             if lives == 0:
                 return score - 1
                     
-        correct_letters = display(keyword,selected,lives, score, rem_time)
+        correct_letters = display(keyword, selected, lives, score, rem_time)
         if correct_letters == len(keyword):
             pygame.time.delay(1000)
             score += 1
@@ -98,7 +99,3 @@ start_ticks = pygame.time.get_ticks()
 while True:
     score = play(score, start_ticks)
     print(score)
-#game_over(score)
-#pygame.quit()
-        
-    
